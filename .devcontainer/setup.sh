@@ -21,3 +21,4 @@ echo "export PATH=\$PATH:~/.garden/bin" >> ~/.bashrc
 
 sudo apt-get update && sudo apt-get install -y xdg-utils
 minikube start
+echo "eval $(minikube docker-env)" >> ~/.bashrc
