@@ -5,7 +5,7 @@ module.exports = {
     progress: false,
     proxy: {
       '^/api': {
-        target: 'http://api',
+        target: process.env.VUE_APP_API_URL || "http://api",
         changeOrigin: true,
         secure: false,
         logLevel: 'debug',
