@@ -1,21 +1,23 @@
 module.exports = {
   devServer: {
     disableHostCheck: true,
-    public: process.env.HOSTNAME ? `http://${process.env.HOSTNAME}` : undefined,
+    public: process.env.HOSTNAME
+      ? `https://${process.env.HOSTNAME}-8080.app.github.dev`
+      : undefined,
     progress: false,
     proxy: {
-      '^/api': {
-        target: process.env.VUE_APP_API_URL || "http://api",
+      "^/api": {
+        target: `https://${process.env.HOSTNAME}-3000.app.github.dev` || "http://api",
         changeOrigin: true,
         secure: false,
-        logLevel: 'debug',
+        logLevel: "debug",
       },
-      '^/socket.io': {
-        target: 'http://result',
+      "^/socket.io": {
+        target: "http://result",
         changeOrigin: true,
         secure: false,
         ws: true,
-        logLevel: 'debug',
+        logLevel: "debug",
       },
     },
   },
